@@ -9,12 +9,12 @@ const getById = (id) => {
 };
 
 const create = async (account) => {
-  const [id] = await db("accounts").update(account.name);
+  const [id] = await db("accounts").insert(account);
   return getById(id);
 };
 
 const updateById = async (id, account) => {
-  await db("accounts").where({ id }).update(account.name);
+  await db("accounts").where({ id }).update(account);
   return getById(id);
 };
 

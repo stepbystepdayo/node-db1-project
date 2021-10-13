@@ -24,11 +24,11 @@ exports.checkAccountPayload = (req, res, next) => {
 
 exports.checkAccountId = async (req, res, next) => {
   const id = req.params.id;
-  const account = await Account.getById(id);
-  if (!account) {
-    res.status(400).json({ message: "account not found" });
+  const accounts = await Account.getById(id);
+  if (!accounts) {
+    res.status(404).json({ message: "account not found" });
   } else {
-    req.account = account;
+    req.accounts = accounts;
     next();
   }
 };
