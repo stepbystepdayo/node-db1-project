@@ -5,7 +5,9 @@ const getAll = () => {
 };
 
 const getById = (id) => {
-  return db("accounts").where("id", id);
+  // return db("accounts").where("id", id) // ORIGINAL CODE
+  return db("accounts").where("id", id).first();
+  // no, you need to return the object, not the array.
 };
 
 const create = async (account) => {
